@@ -49,13 +49,23 @@ function getRandomQuote(arr){
   return arr[randomNumber];
 };
 
-
-
+/***
+  function to randomly change background color. Pulled inspiration and some
+  code from MDN and w3resource to make it work.
+***/
+function getColor(){
+  var x = Math.floor(Math.random() * 256);
+  var y = Math.floor(Math.random() * 256);
+  var z = Math.floor(Math.random() * 256);
+  var color = "rgb("+ x + "," + y + "," + z + ")"
+  console.log(color);
+  document.body.style.background = color;
+};
 /***
   function printQuote() calls the getRandomQuote() function and passes it the
   quotes array. It then builds up the string, using 'if' statements to add the
   citation and year if available. It then returns the string to the 'quote-box'
-  div of 'index.html'
+  div of 'index.html' It also calls the function getcolor().
 ***/
 function printQuote(){
   var quote = getRandomQuote(quotes);
@@ -69,7 +79,11 @@ function printQuote(){
     html += '<span class = "year">' + quote.year + '</span>'
   };
   html+= '</p>';
+
+  getColor();
+
   return document.getElementById('quote-box').innerHTML = html;
+
 };
 
 
