@@ -89,7 +89,8 @@ function printQuote(){
 
 
 /***
-
+auto runs the printQuote() function every 20 seconds. Used the article covering
+setInterval() on MDN
 ***/
-
+var autoRun = setInterval(printQuote, 20000);
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
