@@ -15,26 +15,32 @@ var quotes = [
   quote: "Climate is what you expect, weather is what you get",
   source: "Robert A Heinlein",
   citation: "Time Enough for Love",
-  year: 1973
+  year: 1973,
+  tag: "Literature"
+
   },
   {
   quote: "After a time, you may find that ‘having’ is not so pleasing a thing, after all, as “wanting.” It is not logical, but it is often true.",
   source: "Spock",
-  citation: "Star Trek, The Original Series"
+  citation: "Star Trek - The Original Series",
+  tag: "Television"
   },
   {
   quote: "All we have to decide is what to do with the time that is given us.",
   source: "Gandalf",
-  citation: "The Return of the King"
+  citation: "The Return of the King",
+  tag: "Literature"
   },
   {
   quote: "Curse your sudden but inevitable betrayal!",
   source: "Hoban 'Wash' Washburne",
-  citation: "Firefly"
+  citation: "Firefly",
+  tag: "Television"
   },
   {
   quote: "No. Try not. Do. Or do not. There is no try.",
-  source: "Yoda"
+  source: "Yoda",
+  tag: "Movie"
   }
 ]
 
@@ -78,6 +84,9 @@ function printQuote(){
   if(typeof(quote.year) != "undefined"){
     html += '<span class = "year">' + quote.year + '</span>'
   };
+  if(typeof(quote.tag) != "undefined"){
+    html += '<span class = "tag">' + quote.tag + '</span>'
+  };
   html+= '</p>';
 
   getColor();
@@ -85,12 +94,14 @@ function printQuote(){
   return document.getElementById('quote-box').innerHTML = html;
 
 };
+/// run function when page loads to override basic quote on html
 
-
+window.onload = printQuote();
 
 /***
 auto runs the printQuote() function every 20 seconds. Used the article covering
 setInterval() on MDN
 ***/
+
 var autoRun = setInterval(printQuote, 20000);
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
